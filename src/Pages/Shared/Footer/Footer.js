@@ -1,14 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/favicon.png'
 const Footer = () => {
     return (
         <footer className=" p-10 bg-green-200 text-base-content mt-10">
             <div className='footer'>
-                <div>
+                <Link to='/'>
                     <img className="w-20 rounded-full" src={logo} alt="Company Logo" />
                     <p className='text-3xl'>RePhone</p>
-                    <p>Providing reliable tech since 2019</p>
-                </div>
+                </Link>
                 <div>
                     <span className="footer-title">Services</span>
                     <a href='/' className="link link-hover">Branding</a>
@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='text-center mt-4'>
-                <p>Copyright © {new Date().getFullYear()} - All right reserved by RePhone Company Ltd</p>
+                <p className='text-[12px]'>Copyright © {new Date().getFullYear()} - All right reserved by RePhone Company Ltd</p>
             </div>
 
         </footer>
