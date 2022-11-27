@@ -15,7 +15,7 @@ const menuItems = <React.Fragment>
 
 const Navbar = () => {
     return (
-        <div className="navbar flex justify-between">
+        <div className="navbar bg-green-200 flex justify-between">
             <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
                 <AiOutlineBars></AiOutlineBars>
             </label>
