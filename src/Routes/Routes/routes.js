@@ -1,4 +1,5 @@
 import Blog from "../../Pages/Blog/Blog";
+import SpecificCategory from "../../Pages/Products/SpecificCatagory/SpecificCategory";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../layouts/Main");
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/category/:id',
+                element: <SpecificCategory></SpecificCategory>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]
     }
