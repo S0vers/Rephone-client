@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/favicon.png'
 const Footer = () => {
     return (
-        <footer className=" p-10 bg-green-200 text-base-content mt-10">
+        <footer className=" p-10 bg-green-200 text-base-content">
             <div className='footer'>
                 <Link to='/'>
                     <img className="w-20 rounded-full" src={logo} alt="Company Logo" />

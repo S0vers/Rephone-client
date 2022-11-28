@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='w-full lg:w-[980px] mx-auto mt-10'>
+        <div className='w-full lg:w-[980px] mx-auto my-10'>
             <div tabIndex={0} className="collapse group border collapse-arrow">
                 <div className="collapse-title text-center bg-blue-200 text-primary-content group-focus:bg-green-200 group-focus:text-secondary-content">
                     What are the different ways to manage a state in a React application?

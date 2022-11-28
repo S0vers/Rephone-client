@@ -2,6 +2,7 @@ import React from 'react';
 import Advetisment from '../Advetisment/Advetisment';
 import Banner from '../Banner/Banner';
 import Catagory from '../Catagories/Catagory';
+import ContactUs from '../ContactUs/ContactUs';
 import WasteCount from '../WasteCount/WasteCount';
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
                 <Advetisment></Advetisment>
             }
             <WasteCount></WasteCount>
+            <ContactUs></ContactUs>
         </div>
     );
 };
