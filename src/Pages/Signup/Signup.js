@@ -29,7 +29,6 @@ const Signup = () => {
                 updateUser(userInfo)
                     .then(() => {
                         saveUser(data.name, data.email, data.role)
-                        navigate(from, { replace: true })
                     })
                     .catch(error => {
                         setSignUperror(error.message)
@@ -58,7 +57,7 @@ const Signup = () => {
                 const name = user.displayName
                 const email = user.email
                 saveUser(name, email, role)
-                navigate(from, { replace: true })
+                setCreatedEmail(email)
             })
     }
     return (

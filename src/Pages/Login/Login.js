@@ -4,6 +4,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthProvider";
 import UseToken from '../../hooks/UseToken';
+
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -17,12 +18,10 @@ const Login = () => {
         navigate(from, { replace: true })
     }
     const handleLogin = data => {
-        console.log(data);
         setLoginError('');
         signIn(data.email, data.password)
             .then(result => {
                 setLoginUserEmail(data.email)
-                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error.message)

@@ -1,9 +1,11 @@
 import DashBoardLayout from "../../layouts/DashBoardLayout";
 import Blog from "../../Pages/Blog/Blog";
+import Allsellers from "../../Pages/DashBoard/AllSellers/Allsellers";
 import DashBoard from "../../Pages/DashBoard/DashBoard";
 import Login from "../../Pages/Login/Login";
 import SpecificCategory from "../../Pages/Products/SpecificCatagory/SpecificCategory";
 import Signup from "../../Pages/Signup/Signup";
+import AdminRoute from "../PrivateRoutes/AdminRoute";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <DashBoard></DashBoard>
+            },
+            {
+                path: '/dashboard/allsellers',
+                element: <AdminRoute> <Allsellers></Allsellers></AdminRoute>
             }
         ]
     }
