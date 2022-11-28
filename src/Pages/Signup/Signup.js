@@ -53,7 +53,7 @@ const Signup = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                const user = result.email
+                const user = result.user
                 const role = 'buyer'
                 const name = user.displayName
                 const email = user.email
