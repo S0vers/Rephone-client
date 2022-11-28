@@ -1,5 +1,7 @@
 import Blog from "../../Pages/Blog/Blog";
+import Login from "../../Pages/Login/Login";
 import SpecificCategory from "../../Pages/Products/SpecificCatagory/SpecificCategory";
+import Signup from "../../Pages/Signup/Signup";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../layouts/Main");
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/signup',
+                element: <Signup></Signup>
             },
             {
                 path: '/category/:id',

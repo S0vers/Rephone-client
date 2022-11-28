@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineBars } from "react-icons/ai";
 import logo from '../../../assets/logo/favicon.png'
-const menuItems = <React.Fragment>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/blog'>Blog</Link></li>
-    <>
-        <li><Link to='/dashboard'>DashBoard</Link></li>
-        <li><button>Sign out</button></li>
-    </>
-    <li><Link to='/login'>Login</Link></li>
-</React.Fragment>
+import { AuthContext } from '../../../Context/AuthProvider';
+
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logout()
+            .then(() => { })
+            .catch(error => console.error())
+    }
+    const menuItems = <React.Fragment>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
+        {
+            user?.uid ?
+                <>
+                    <li><Link to='/dashboard'>DashBoard</Link></li>
+                    <li><button onClick={handleLogOut}>Sign out</button></li>
+                </>
+                :
+                <li><Link to='/login'>Login</Link></li>
+        }
+    </React.Fragment>
     return (
         <div className="navbar bg-green-200 flex justify-between">
             <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">

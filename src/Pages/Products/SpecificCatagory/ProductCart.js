@@ -9,9 +9,9 @@ const ProductCart = ({ product }) => {
                 <h2 className="card-title text-2xl font-bold">{name}</h2>
                 <p>Description: {Description}</p>
                 <p>Location: {Location}</p>
-                <p className='text-primary'>Resale Price: ${resalePrice}</p>
-                <p>Original Price: ${originalPrice}</p>
-                <p>Years of Use: {yearsOfUse} Years</p>
+                <p className='text-green-600'>Resale Price: ${resalePrice}</p>
+                <p className='text-red-600'>Original Price: ${originalPrice}</p>
+                <p>Years of Use: <span className='text-green-600'>{yearsOfUse} Years</span></p>
                 <p>Posted On: {postTime}</p>
                 <p className='flex items-center text-xl'>Seller: {sellerName} {<span className='text-blue-500 ml-5'><MdVerified></MdVerified></span>}</p>
                 <div className="card-actions justify-end">
