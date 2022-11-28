@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdVerified } from "react-icons/md";
+import Loading from '../../Shared/Loading/Loading';
 const ProductCart = ({ product }) => {
     const { name, Location, resalePrice, originalPrice, yearsOfUse, postTime, _id, sellerEmail, sellerName, ProductImg, Description } = product
+    const [verified, setVerified] = useState(false);
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        if (sellerEmail) {
+            fetch(`http://localhost:5000/users?email=${sellerEmail}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    setVerified(data.isVerified)
+                    setLoading(false)
+                })
+        }
+    }, [sellerEmail])
+    if (loading) {
+        return <Loading></Loading>
+    }
     return (
         <div className="card w-full lg:w-96 bg-blue-100 shadow-xl">
             <figure><img src={ProductImg} alt="Shoes" /></figure>
@@ -13,7 +30,11 @@ const ProductCart = ({ product }) => {
                 <p className='text-red-600'>Original Price: ${originalPrice}</p>
                 <p>Years of Use: <span className='text-green-600'>{yearsOfUse} Years</span></p>
                 <p>Posted On: {postTime}</p>
-                <p className='flex items-center text-xl'>Seller: {sellerName} {<span className='text-blue-500 ml-5'><MdVerified></MdVerified></span>}</p>
+                <p className='flex items-center text-xl'>Seller: {sellerName}
+                    {verified &&
+                        <span className='text-blue-500 ml-5'><MdVerified></MdVerified></span>
+                    }
+                </p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-warning">Report Product</button>
                     <button className="btn btn-primary">Book Product</button>

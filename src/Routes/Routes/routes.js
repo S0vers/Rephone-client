@@ -2,6 +2,7 @@ import Blog from "../../Pages/Blog/Blog";
 import Login from "../../Pages/Login/Login";
 import SpecificCategory from "../../Pages/Products/SpecificCatagory/SpecificCategory";
 import Signup from "../../Pages/Signup/Signup";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../layouts/Main");
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <SpecificCategory></SpecificCategory>,
+                element: <PrivateRoutes><SpecificCategory></SpecificCategory></PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]

@@ -22,6 +22,7 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 setLoginUserEmail(data.email)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error.message)
@@ -33,6 +34,7 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
+                navigate(from, { replace: true })
             })
     }
     return (

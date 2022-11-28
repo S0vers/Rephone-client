@@ -58,6 +58,7 @@ const Signup = () => {
                 const name = user.displayName
                 const email = user.email
                 saveUser(name, email, role)
+                navigate(from, { replace: true })
             })
     }
     return (
