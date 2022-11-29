@@ -33,7 +33,7 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                navigate(from, { replace: true })
+                setLoginUserEmail(result.user.email)
             })
     }
     return (
