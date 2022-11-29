@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MdVerified } from "react-icons/md";
 import Loading from '../../Shared/Loading/Loading';
-const ProductCart = ({ product }) => {
+const ProductCart = ({ product, setProduct }) => {
     const { name, Location, resalePrice, originalPrice, yearsOfUse, postTime, _id, sellerEmail, sellerName, ProductImg, Description } = product
     const [verified, setVerified] = useState(false);
     const [loading, setLoading] = useState(true)
@@ -10,7 +10,6 @@ const ProductCart = ({ product }) => {
             fetch(`http://localhost:5000/users?email=${sellerEmail}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     setVerified(data.isVerified)
                     setLoading(false)
                 })
@@ -37,7 +36,11 @@ const ProductCart = ({ product }) => {
                 </p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-warning">Report Product</button>
-                    <button className="btn btn-primary">Book Product</button>
+                    <label className="btn btn-primary"
+                        htmlFor="booking-modal"
+                        onClick={() => setProduct(product)}
+                    >
+                        Book Product</label>
                 </div>
             </div>
         </div>
