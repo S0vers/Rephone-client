@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
@@ -10,14 +10,18 @@ const Signup = () => {
     const { createUser, updateUser, googleSignIn } = useContext(AuthContext)
     const [signUpError, setSignUperror] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [createduserEmail, setCreatedEmail] = useState('')
+    const [createduserEmail, setCreatedEmail] = useState('');
+    const [isInitialRender, setIsInitialRender] = useState(true);
     const [token] = UseToken(createduserEmail);
     const location = useLocation();
     const from = location.state?.from.pathname || '/';
     const navigate = useNavigate();
-    if (token) {
-        navigate(from, { replace: true })
-    }
+    useEffect(() => {
+        if (token) {
+            setIsInitialRender(false)
+            navigate(from, { replace: true })
+        }
+    }, [token, isInitialRender, from, navigate])
     const handleSignup = data => {
         setSignUperror('')
         createUser(data.email, data.password)

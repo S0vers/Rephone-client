@@ -48,6 +48,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoutes><SpecificCategory></SpecificCategory></PrivateRoutes>,
+                errorElement: <DisplayError></DisplayError>,
                 loader: ({ params }) => fetch(`https://rephone-server.vercel.app/products/${params.id}`)
             }
         ]
