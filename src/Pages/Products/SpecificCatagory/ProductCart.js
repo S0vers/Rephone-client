@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { MdVerified } from "react-icons/md";
+import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
 const ProductCart = ({ product, setProduct }) => {
+    const { logout } = useContext(AuthContext);
     const { name, Location, resalePrice, originalPrice, yearsOfUse, postTime, _id, sellerEmail, sellerName, ProductImg, Description } = product
     const [verified, setVerified] = useState(false);
     const [loading, setLoading] = useState(true)
@@ -17,6 +20,29 @@ const ProductCart = ({ product, setProduct }) => {
     }, [sellerEmail])
     if (loading) {
         return <Loading></Loading>
+    }
+    const handleReport = _id => {
+        fetch(`http://localhost:5000/products/${_id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    toast.error('There was a error!')
+                    return logout()
+                }
+                return res.json()
+            })
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Product Reported.')
+                }
+                else {
+                    toast('The product is already reported.')
+                }
+            })
     }
     return (
         <div className="card w-full lg:w-96 bg-blue-100 shadow-xl">
@@ -35,7 +61,7 @@ const ProductCart = ({ product, setProduct }) => {
                     }
                 </p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-warning">Report Product</button>
+                    <button onClick={() => handleReport(_id)} className="btn btn-warning">Report Product</button>
                     <label className="btn btn-primary"
                         htmlFor="booking-modal"
                         onClick={() => setProduct(product)}
