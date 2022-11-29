@@ -20,7 +20,7 @@ const ProductCart = ({ product, setProduct }) => {
     }
     return (
         <div className="card w-full lg:w-96 bg-blue-100 shadow-xl">
-            <figure><img src={ProductImg} alt="Shoes" /></figure>
+            <figure><img src={ProductImg} alt="Product" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-2xl font-bold">{name}</h2>
                 <p>Description: {Description}</p>

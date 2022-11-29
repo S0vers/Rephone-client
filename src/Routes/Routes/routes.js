@@ -3,10 +3,13 @@ import Blog from "../../Pages/Blog/Blog";
 import AllBuyers from "../../Pages/DashBoard/AllBuyers/AllBuyers";
 import Allsellers from "../../Pages/DashBoard/AllSellers/Allsellers";
 import DashBoard from "../../Pages/DashBoard/DashBoard";
+import MyOrders from "../../Pages/DashBoard/MyOrders/MyOrders";
+import Payments from "../../Pages/DashBoard/Payments/Payments";
 import Login from "../../Pages/Login/Login";
 import SpecificCategory from "../../Pages/Products/SpecificCatagory/SpecificCategory";
 import Signup from "../../Pages/Signup/Signup";
 import AdminRoute from "../PrivateRoutes/AdminRoute";
+import BuyerRoute from "../PrivateRoutes/BuyerRoute";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -57,6 +60,15 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/allbuyers',
                 element: <AdminRoute> <AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+                path: '/dashboard/myorders',
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <BuyerRoute><Payments></Payments></BuyerRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
             }
         ]
     }
