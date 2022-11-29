@@ -22,7 +22,6 @@ const MyOrders = () => {
             return data;
         }
     })
-    console.log(bookings)
     if (isLoading) {
         return <Loading></Loading>
     }
