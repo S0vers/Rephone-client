@@ -19,7 +19,7 @@ const auth = getAuth(app);
 //Auth Provider for the program
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const googleProvider = new GoogleAuthProvider()
 
     //Create user with Email and password
