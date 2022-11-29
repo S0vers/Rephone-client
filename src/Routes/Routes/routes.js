@@ -1,5 +1,6 @@
 import DashBoardLayout from "../../layouts/DashBoardLayout";
 import Blog from "../../Pages/Blog/Blog";
+import AllBuyers from "../../Pages/DashBoard/AllBuyers/AllBuyers";
 import Allsellers from "../../Pages/DashBoard/AllSellers/Allsellers";
 import DashBoard from "../../Pages/DashBoard/DashBoard";
 import Login from "../../Pages/Login/Login";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/allsellers',
                 element: <AdminRoute> <Allsellers></Allsellers></AdminRoute>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element: <AdminRoute> <AllBuyers></AllBuyers></AdminRoute>
             }
         ]
     }

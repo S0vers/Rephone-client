@@ -53,7 +53,7 @@ const Signup = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user
-                const role = 'buyer'
+                const role = 'Buyer'
                 const name = user.displayName
                 const email = user.email
                 saveUser(name, email, role)
