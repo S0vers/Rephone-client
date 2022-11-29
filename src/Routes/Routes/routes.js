@@ -6,7 +6,9 @@ import DashBoard from "../../Pages/DashBoard/DashBoard";
 import MyOrders from "../../Pages/DashBoard/MyOrders/MyOrders";
 import Payments from "../../Pages/DashBoard/Payments/Payments";
 import Login from "../../Pages/Login/Login";
+import NotFound from "../../Pages/NotFound/NotFound";
 import SpecificCategory from "../../Pages/Products/SpecificCatagory/SpecificCategory";
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import Signup from "../../Pages/Signup/Signup";
 import AdminRoute from "../PrivateRoutes/AdminRoute";
 import BuyerRoute from "../PrivateRoutes/BuyerRoute";
@@ -21,6 +23,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -48,6 +51,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoutes><DashBoardLayout></DashBoardLayout></PrivateRoutes>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',
@@ -71,6 +75,10 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
             }
         ]
+    },
+    {
+        path: '*',
+        element: <NotFound></NotFound>
     }
 ])
 export default router;
