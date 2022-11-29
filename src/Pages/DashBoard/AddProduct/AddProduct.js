@@ -59,7 +59,7 @@ const AddProduct = () => {
                         .then(result => {
                             if (result.acknowledged) {
                                 toast.success(`${data.productName} added successfully`)
-                                //navigate('/dashboard/myproduct')
+                                navigate('/dashboard/myproduct')
                             }
                         })
                 }
