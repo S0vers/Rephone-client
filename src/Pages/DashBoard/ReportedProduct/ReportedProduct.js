@@ -29,7 +29,7 @@ const ReportedProduct = () => {
         }
     })
     const deleteProduct = product => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`http://localhost:5000/reportedproducts/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
