@@ -4,7 +4,7 @@ import Loading from '../../Shared/Loading/Loading';
 import CatagoryCard from './CatagoryCard';
 
 const Catagory = () => {
-    const url = 'http://localhost:5000/catagories'
+    const url = 'https://rephone-server.vercel.app/catagories'
     const { data: catagories, isLoading } = useQuery({
         queryKey: ['Categories'],
         queryFn: async () => {

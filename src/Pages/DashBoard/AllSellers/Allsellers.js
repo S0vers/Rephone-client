@@ -13,7 +13,7 @@ const Allsellers = () => {
     const closeModal = () => {
         setDeletingSeller(null);
     }
-    const url = 'http://localhost:5000/users/seller'
+    const url = 'https://rephone-server.vercel.app/users/seller'
     const { data: sellers, isLoading, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -33,7 +33,7 @@ const Allsellers = () => {
         return <Loading></Loading>
     }
     const handleVerifySeller = id => {
-        fetch(`http://localhost:5000/users/verifySeller/${id}`, {
+        fetch(`https://rephone-server.vercel.app/users/verifySeller/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -54,7 +54,7 @@ const Allsellers = () => {
             })
     }
     const deleteSeller = seller => {
-        fetch(`http://localhost:5000/users/${seller._id}`, {
+        fetch(`https://rephone-server.vercel.app/users/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -1,7 +1,6 @@
 import AdvetismentCard from "./AdvetismentCard";
 
 const Advetisment = ({ advetisments }) => {
-    console.log(advetisments)
     return (
         <div className='my-10'>
             <h3 className="text-4xl font-bold text-center text-primary">Advertisement</h3>

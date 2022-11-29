@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoutes><SpecificCategory></SpecificCategory></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://rephone-server.vercel.app/products/${params.id}`)
             }
         ]
     },
@@ -80,7 +80,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <BuyerRoute><Payments></Payments></BuyerRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader: ({ params }) => fetch(`https://rephone-server.vercel.app/bookings/${params.id}`)
             }
             ,
             {

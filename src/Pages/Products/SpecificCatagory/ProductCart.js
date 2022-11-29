@@ -10,7 +10,7 @@ const ProductCart = ({ product, setProduct }) => {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         if (sellerEmail) {
-            fetch(`http://localhost:5000/users?email=${sellerEmail}`)
+            fetch(`https://rephone-server.vercel.app/users?email=${sellerEmail}`)
                 .then(res => res.json())
                 .then(data => {
                     setVerified(data.isVerified)
@@ -22,7 +22,7 @@ const ProductCart = ({ product, setProduct }) => {
         return <Loading></Loading>
     }
     const handleReport = _id => {
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://rephone-server.vercel.app/products/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

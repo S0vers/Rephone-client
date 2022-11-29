@@ -14,7 +14,7 @@ const MyProducts = () => {
     const closeModal = () => {
         setDeletingProduct(null);
     }
-    const url = `http://localhost:5000/products?email=${user.email}`
+    const url = `https://rephone-server.vercel.app/products?email=${user.email}`
     const { data: products, isLoading, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -31,8 +31,7 @@ const MyProducts = () => {
         }
     })
     const deleteProduct = product => {
-        console.log(product)
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://rephone-server.vercel.app/products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -53,7 +52,7 @@ const MyProducts = () => {
             })
     }
     const handleAdvetiseProduct = id => {
-        fetch(`http://localhost:5000/advertisements/${id}`, {
+        fetch(`https://rephone-server.vercel.app/advertisements/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

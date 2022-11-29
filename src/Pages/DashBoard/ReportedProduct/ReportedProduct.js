@@ -12,7 +12,7 @@ const ReportedProduct = () => {
     const closeModal = () => {
         setDeletingProduct(null);
     }
-    const url = 'http://localhost:5000/reportedproducts'
+    const url = 'https://rephone-server.vercel.app/reportedproducts'
     const { data: products, isLoading, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -29,7 +29,7 @@ const ReportedProduct = () => {
         }
     })
     const deleteProduct = product => {
-        fetch(`http://localhost:5000/reportedproducts/${product._id}`, {
+        fetch(`https://rephone-server.vercel.app/reportedproducts/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

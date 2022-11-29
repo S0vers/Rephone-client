@@ -13,12 +13,10 @@ const AddProduct = () => {
     const navigate = useNavigate();
     const imageHostKey = process.env.REACT_APP_imagebb_key;
     const handleAddProduct = data => {
-        console.log(data)
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
         const catagoryID = catagories.filter(catagory => catagory.brandName === data.category)
-        console.log()
         const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
         fetch(url, {
             method: 'POST',
@@ -47,7 +45,7 @@ const AddProduct = () => {
                         advertise: false,
                         status: "available"
                     }
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://rephone-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -67,7 +65,7 @@ const AddProduct = () => {
 
     }
     useEffect(() => {
-        axios.get('http://localhost:5000/catagories')
+        axios.get('https://rephone-server.vercel.app/catagories')
             .then(function (response) {
                 setCatagory(response.data);
             })

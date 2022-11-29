@@ -7,7 +7,7 @@ import ContactUs from '../ContactUs/ContactUs';
 import WasteCount from '../WasteCount/WasteCount';
 
 const Home = () => {
-    const url = 'http://localhost:5000/advertisements'
+    const url = 'https://rephone-server.vercel.app/advertisements'
     const { data: advetisments, isLoading } = useQuery({
         queryKey: ['advetisments'],
         queryFn: async () => {

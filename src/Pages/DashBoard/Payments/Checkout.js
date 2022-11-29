@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const Checkout = ({ booking }) => {
-    const { price, _id, productId, buyerEmail, ProductName, buyerName } = booking;
-    console.log(booking);
+    const { price, _id, productId, buyerEmail, buyerName } = booking;
     const [clientSecret, setClientSecret] = useState('')
     const stripe = useStripe();
     const elements = useElements();
@@ -14,7 +13,7 @@ const Checkout = ({ booking }) => {
     const [processing, setProcessing] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://rephone-server.vercel.app/create-payment-intent', {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -34,7 +33,7 @@ const Checkout = ({ booking }) => {
         if (card == null) {
             return;
         }
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card
         });
@@ -70,7 +69,7 @@ const Checkout = ({ booking }) => {
                 productId: productId,
                 bookingId: _id
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://rephone-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -80,7 +79,6 @@ const Checkout = ({ booking }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.insertedId) {
                         setSuccess('Congratulations! Payment Successful.')
                         toast.success('Congratulations! Payment Successful.')
